@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="box">
-        <form method="post" action="">
+        <form method="post" enctype="multipart/form-data" action="">
             {% csrf_token %}
-            {% for field in form %}
-                <div class="input-container">
-                    <label for="{{ field.id_for_label }}" class="label">{{ field.name }}</label><br>
-                    {{ field }}
+
+            <div class="sec-center">
+                <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+                <label class="for-dropdown" for="dropdown">Dropdown Menu </label>
+                <div class="section-dropdown">
+                    {% for a in form2 %}
+                        <a href="">{{ a }}</a>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-            <button type="submit">HHH</button>
+                {% for field in form %}
+                    <div class="input-container">
+                        <label for="{{ field.id_for_label }}" class="label">{{ field.name }}</label><br>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+
+                <button type="submit">HHH</button>
         </form>
     </div>
 {% endblock %}
