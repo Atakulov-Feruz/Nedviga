@@ -1,20 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Главная
+{% endblock %}
 {% block content %}
-    <div class="form">
-        <form method="post" action="">
-            {% csrf_token %}
-            <div class="input-box">
-                <label for="" class="label-create"></label>
-                {{ form.convenience }}
+    <div class="section">
+        {% for house in houses %}
+            <div class="house-card">
+                <a href="{% url 'house:detail' house.pk %}">
+                    <div class="image">
+                        <img style="width: 100%;height: 300px;border-top-left-radius: 15px;
+    border-top-right-radius: 15px;" src="{{ house.preview.url }}" alt="">
+                    </div>
+                    <div style="padding: 10px">
+                        <div class="house-header">
+                            {{ house.title }}
+                        </div>
+                        <div class="house-price">
+                            {{ house.price }}
+                        </div>
+                        <div class="house-bio">
+                            Комнат - {{ house.rooms }}, {{ house.size }} m² <br>
+                            Расположение - {{ house.address }}
+                            Добавлено - {{ house.date_added }}
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="input-box">
-                <label for="" class="label-create"></label>
-                {{ form.living_space }}
-            </div>
-            <div class="input-box">
-                <label for="" class="label-create"></label>
-                {{ form.location }}
-            </div>
-        </form>
+        {% endfor %}
     </div>
 {% endblock %}

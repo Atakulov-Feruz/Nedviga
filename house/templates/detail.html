@@ -3,5 +3,91 @@
     {{ house.title }}
 {% endblock %}
 {% block content %}
-    <h1>{{ house.title }}</h1>
+    <div style="margin-left: 70px">
+        <div class="columns is">
+            <div class="column is-10">
+                <p style="color: darkgray">Обновлено: {{ house.date_added }}
+                <h1 style="margin-top: 60px;font-size: 50px;font-weight: bold;color: black">{{ house.rooms }}-комн.{{ house.type }}, {{ house.size }}
+                    м²</h1>
+                <p style="margin-top: 10px">{{ house.address }}</p>
+                <br>
+                <div style="display:flex">
+                    <div class="slideshow-container">
+                        {% for image in images %}
+                            <div class="mySlides fade">
+                                <img src="{{ image.image1.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image2.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image3.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image4.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image5.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image5.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image6.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image7.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image8.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image9.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image10.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image11.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image12.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image13.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image14.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image15.url }}" alt="">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="{{ image.image16.url }}" alt="">
+                            </div>
+                        {% endfor %}
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        <p>{{ house.bio }}</p>
+                        <div class="columns is-10">
+                            <div class="column has-text-grey is-5">
+                                <h1 style="font-size: 30px;color: black;font-weight: bold">О квартире</h1>
+                                <p style="font-size: 20px;margin-top: 10px">Тип жилья <span
+                                        style="margin-left: 150px;color: black">{{ house.type }}</span></p>
+                                <hr style="background-color: darkgray;margin-top: -2px;">
+                                <p style="font-size: 20px;margin-top: 10px">Общая площадь<span
+                                        style="margin-left: 150px;color: black">{{ house.type }}</span></p>
+                            </div>
+                            <div class="column">
+                                <h1 class="ml-4" style="font-size: 30px;color: black;font-weight: bold">О доме</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4 second">
+                <h1>{{ house.price }}</h1>
+            </div>
+        </div>
+    </div>
 {% endblock %}

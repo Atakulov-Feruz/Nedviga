@@ -5,7 +5,7 @@ from .models import *
 
 
 class BaseForm(forms.ModelForm):
-    type = forms.Select(choices=Type_choise, attrs={'class': 'dropdown'})
+    type = forms.ChoiceField(choices=Type_choise)
     title = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
     bio = forms.TextInput()
     preview = forms.ImageField()
@@ -25,15 +25,15 @@ class BaseForm(forms.ModelForm):
     class Meta:
         model = House
         fields = [
-            'type', 'title', 'bio','preview', 'address',
+            'type', 'title', 'bio', 'preview', 'address',
             'price',
             'size', 'material', 'rooms', 'furniture', 'repair',
             'near', 'date_of_building', ]
 
 
 class ApartamentForm(forms.ModelForm):
-    floor = forms.IntegerField(widget=forms.NumberInput)
-    storeys = forms.IntegerField(widget=forms.NumberInput)
+    floor = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'input'}))
+    storeys = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'input'}))
     building_type = forms.ChoiceField(choices=Building_type)
 
     class Meta:
@@ -42,7 +42,7 @@ class ApartamentForm(forms.ModelForm):
 
 
 class HouseForm(forms.ModelForm):
-    living_space = forms.IntegerField(widget=forms.NumberInput)
+    living_space = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'input'}))
     location = forms.ChoiceField(choices=Location)
     convenience = forms.TextInput()
 
@@ -52,11 +52,11 @@ class HouseForm(forms.ModelForm):
 
 
 class CustomFileField(forms.FileInput):
-    pass
+    template_name = 'file.html'
 
 
 class ImageForm(forms.ModelForm):
-    image1 = forms.ImageField(widget=CustomFileField(attrs={'class': 'input'}))
+    image1 = forms.ImageField()
     image2 = forms.ImageField()
     image3 = forms.ImageField()
     image4 = forms.ImageField()
