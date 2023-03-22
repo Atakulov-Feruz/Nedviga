@@ -11,7 +11,7 @@
     <link rel='icon' href='{% static '25694.png' %}' type='image/x-icon'>
 </head>
 <body>
-<nav class="navbar">
+<nav class="navbar background-light-sea">
     <a href="{% url 'house:home' %}" class="nav-item">Главная</a>
     <a href="{% url 'house:create' %}" class="nav-item">Добавить объявление</a>
     {% if user.is_authenticated %}
@@ -24,11 +24,15 @@
         <a href="{% url 'auth:login' %}" class="nav-item">Войти</a>
     {% endif %}
 </nav>
-<div>
-    {% block content %}
-    {% endblock %}
-    {% block script %}
-    {% endblock %}
+<div class="columns">
+    <div class="add"></div>
+    <div style="width: 60%;">
+        {% block content %}
+        {% endblock %}
+        {% block script %}
+        {% endblock %}
+    </div>
+    <div class="add"></div>
 </div>
 <script src="{% static 'carousel.js' %}"></script>
 <script src="{% static 'select.js' %}"></script>
